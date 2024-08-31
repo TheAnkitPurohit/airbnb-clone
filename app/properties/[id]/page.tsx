@@ -31,8 +31,8 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   if (!property) redirect('/');
   const { baths, bedrooms, beds, guests } = property;
   const details = { baths, bedrooms, beds, guests };
-  const {firstName} = property.profile;
-  const {profileImage} = property.profile;
+  const { firstName } = property.profile;
+  const { profileImage } = property.profile;
 
   const { userId } = auth();
   const isNotOwner = property.profile.clerkId !== userId;

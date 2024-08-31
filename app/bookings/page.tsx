@@ -3,7 +3,7 @@ import EmptyList from '@/components/home/EmptyList';
 import { IconButton } from '@/components/form/Buttons';
 import { formatDate, formatCurrency } from '@/utils/format';
 import FormContainer from '@/components/form/FormContainer';
-import { fetchBookings , deleteBookingAction } from '@/utils/actions';
+import { fetchBookings, deleteBookingAction } from '@/utils/actions';
 import CountryFlagAndName from '@/components/card/CountryFlagAndName';
 import {
   Table,
