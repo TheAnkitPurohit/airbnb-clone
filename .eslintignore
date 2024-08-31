@@ -11,15 +11,15 @@ next.config.js
 vite.config.js
 vite.config.ts
 
-src/reportWebVitals.js
-src/service-worker.js
-src/serviceWorkerRegistration.js
-src/setupTests.js
+app/reportWebVitals.js
+app/service-worker.js
+app/serviceWorkerRegistration.js
+app/setupTests.js
 
-src/reportWebVitals.ts
-src/service-worker.ts
-src/serviceWorkerRegistration.ts
-src/setupTests.ts
+app/reportWebVitals.ts
+app/service-worker.ts
+app/serviceWorkerRegistration.ts
+app/setupTests.ts
 
 
-src/components/ui
+app/components/ui
