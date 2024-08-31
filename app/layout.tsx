@@ -9,8 +9,16 @@ import Providers from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'HomeAway Draft',
-  description: 'Feel at home, away from home.',
+  title: 'Booking System - Your Online Reservation Platform',
+  description: 'Easy and efficient online bookings for various services and accommodations.',
+  keywords: [
+    'booking',
+    'reservation',
+    'online booking',
+    'appointment scheduling',
+    'accommodation',
+    'services',
+  ],
 };
 
 export default function RootLayout({

@@ -1,12 +1,24 @@
-import { LuUser2 } from 'react-icons/lu';
+import React from 'react';
+import Image from 'next/image';
+import { User2 } from 'lucide-react';
 import { fetchProfileImage } from '@/utils/actions';
-async function UserIcon() {
+
+const UserIcon = async () => {
   const profileImage = await fetchProfileImage();
+
   if (profileImage) {
     return (
-      <img src={profileImage} className='w-6 h-6 rounded-full object-cover' />
+      <Image
+        src={profileImage}
+        width={24}
+        height={24}
+        className="rounded-full object-cover"
+        alt="User profile"
+      />
     );
   }
-  return <LuUser2 className='w-6 h-6 bg-primary rounded-full text-white' />;
-}
+
+  return <User2 className="w-6 h-6 p-1 bg-primary rounded-full text-white" />;
+};
+
 export default UserIcon;
