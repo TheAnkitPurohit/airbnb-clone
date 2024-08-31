@@ -22,6 +22,8 @@
     "prismamigrate:local": "dotenv -e .env.development -- prisma migrate dev --name init"
   },
   "dependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@clerk/nextjs": "^5.2.8",
     "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "^5.17.0",
