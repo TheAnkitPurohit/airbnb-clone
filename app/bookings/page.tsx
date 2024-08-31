@@ -1,23 +1,19 @@
-import EmptyList from '@/components/home/EmptyList';
-import CountryFlagAndName from '@/components/card/CountryFlagAndName';
 import Link from 'next/link';
-
+import EmptyList from '@/components/home/EmptyList';
+import { IconButton } from '@/components/form/Buttons';
 import { formatDate, formatCurrency } from '@/utils/format';
+import FormContainer from '@/components/form/FormContainer';
+import { fetchBookings , deleteBookingAction } from '@/utils/actions';
+import CountryFlagAndName from '@/components/card/CountryFlagAndName';
 import {
   Table,
+  TableRow,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableCaption,
 } from '@/components/ui/table';
-
-import FormContainer from '@/components/form/FormContainer';
-import { IconButton } from '@/components/form/Buttons';
-import { fetchBookings } from '@/utils/actions';
-import { deleteBookingAction } from '@/utils/actions';
-import LoadingTable from '@/components/booking/LoadingTable';
 
 async function BookingsPage() {
   const bookings = await fetchBookings();
@@ -25,8 +21,8 @@ async function BookingsPage() {
     return <EmptyList />;
   }
   return (
-    <div className='mt-16'>
-      <h4 className='mb-4 capitalize'>total bookings : {bookings.length}</h4>
+    <div className="mt-16">
+      <h4 className="mb-4 capitalize">total bookings : {bookings.length}</h4>
       <Table>
         <TableCaption>A list of your recent bookings.</TableCaption>
         <TableHeader>
@@ -51,7 +47,7 @@ async function BookingsPage() {
                 <TableCell>
                   <Link
                     href={`/properties/${propertyId}`}
-                    className='underline text-muted-foreground tracking-wide'
+                    className="underline text-muted-foreground tracking-wide"
                   >
                     {name}
                   </Link>
@@ -79,7 +75,7 @@ function DeleteBooking({ bookingId }: { bookingId: string }) {
   const deleteBooking = deleteBookingAction.bind(null, { bookingId });
   return (
     <FormContainer action={deleteBooking}>
-      <IconButton actionType='delete' />
+      <IconButton actionType="delete" />
     </FormContainer>
   );
 }

@@ -1,10 +1,7 @@
-import ChartsContainer from '@/components/admin/ChartsContainer';
-import {
-  ChartsLoadingContainer,
-  StatsLoadingContainer,
-} from '@/components/admin/Loading';
-import StatsContainer from '@/components/admin/StatsContainer';
 import { Suspense } from 'react';
+import StatsContainer from '@/components/admin/StatsContainer';
+import ChartsContainer from '@/components/admin/ChartsContainer';
+import { StatsLoadingContainer, ChartsLoadingContainer } from '@/components/admin/Loading';
 
 function AdminPage() {
   return (

@@ -1,36 +1,31 @@
-import EmptyList from '@/components/home/EmptyList';
-import { fetchRentals, deleteRentalAction } from '@/utils/actions';
 import Link from 'next/link';
-
 import { formatCurrency } from '@/utils/format';
+import EmptyList from '@/components/home/EmptyList';
+import { IconButton } from '@/components/form/Buttons';
+import FormContainer from '@/components/form/FormContainer';
+import { fetchRentals, deleteRentalAction } from '@/utils/actions';
 import {
   Table,
+  TableRow,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableCaption,
 } from '@/components/ui/table';
-
-import FormContainer from '@/components/form/FormContainer';
-import { IconButton } from '@/components/form/Buttons';
 
 async function RentalsPage() {
   const rentals = await fetchRentals();
 
   if (rentals.length === 0) {
     return (
-      <EmptyList
-        heading='No rentals to display.'
-        message="Don't hesitate to create a rental."
-      />
+      <EmptyList heading="No rentals to display." message="Don't hesitate to create a rental." />
     );
   }
 
   return (
-    <div className='mt-16'>
-      <h4 className='mb-4 capitalize'>Active Properties : {rentals.length}</h4>
+    <div className="mt-16">
+      <h4 className="mb-4 capitalize">Active Properties : {rentals.length}</h4>
       <Table>
         <TableCaption>A list of all your properties.</TableCaption>
         <TableHeader>
@@ -51,7 +46,7 @@ async function RentalsPage() {
                 <TableCell>
                   <Link
                     href={`/properties/${propertyId}`}
-                    className='underline text-muted-foreground tracking-wide'
+                    className="underline text-muted-foreground tracking-wide"
                   >
                     {name}
                   </Link>
@@ -60,9 +55,9 @@ async function RentalsPage() {
                 <TableCell>{totalNightsSum || 0}</TableCell>
                 <TableCell>{formatCurrency(orderTotalSum)}</TableCell>
 
-                <TableCell className='flex items-center gap-x-2'>
+                <TableCell className="flex items-center gap-x-2">
                   <Link href={`/rentals/${propertyId}/edit`}>
-                    <IconButton actionType='edit'></IconButton>
+                    <IconButton actionType="edit" />
                   </Link>
                   <DeleteRental propertyId={propertyId} />
                 </TableCell>
@@ -79,7 +74,7 @@ function DeleteRental({ propertyId }: { propertyId: string }) {
   const deleteRental = deleteRentalAction.bind(null, { propertyId });
   return (
     <FormContainer action={deleteRental}>
-      <IconButton actionType='delete' />
+      <IconButton actionType="delete" />
     </FormContainer>
   );
 }
