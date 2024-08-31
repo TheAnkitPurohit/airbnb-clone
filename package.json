@@ -7,7 +7,7 @@
     "start": "next start -p 8083",
     "build": "npx prisma generate && next build",
     "typecheck": "tsc",
-    "script:lint": "bash -e ./src/scripts/lint.sh",
+    "script:lint": "bash -e ./scripts/lint.sh",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
