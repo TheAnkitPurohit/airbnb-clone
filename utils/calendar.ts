@@ -1,5 +1,5 @@
-import { DateRange } from 'react-day-picker';
 import { Booking } from '@/utils/types';
+import { DateRange } from 'react-day-picker';
 
 export const defaultSelected: DateRange = {
   from: undefined,
@@ -31,7 +31,7 @@ export const generateBlockedPeriods = ({
 export const generateDateRange = (range: DateRange | undefined): string[] => {
   if (!range || !range.from || !range.to) return [];
 
-  let currentDate = new Date(range.from);
+  const currentDate = new Date(range.from);
   const endDate = new Date(range.to);
   const dateRange: string[] = [];
 
@@ -44,9 +44,7 @@ export const generateDateRange = (range: DateRange | undefined): string[] => {
   return dateRange;
 };
 
-export const generateDisabledDates = (
-  disabledDays: DateRange[]
-): { [key: string]: boolean } => {
+export const generateDisabledDates = (disabledDays: DateRange[]): { [key: string]: boolean } => {
   if (disabledDays.length === 0) return {};
 
   const disabledDates: { [key: string]: boolean } = {};
@@ -56,13 +54,12 @@ export const generateDisabledDates = (
   disabledDays.forEach((range) => {
     if (!range.from || !range.to) return;
 
-    let currentDate = new Date(range.from);
+    const currentDate = new Date(range.from);
     const endDate = new Date(range.to);
 
     while (currentDate <= endDate) {
       if (currentDate < today) {
         currentDate.setDate(currentDate.getDate() + 1);
-        continue;
       }
       const dateString = currentDate.toISOString().split('T')[0];
       disabledDates[dateString] = true;
@@ -73,13 +70,7 @@ export const generateDisabledDates = (
   return disabledDates;
 };
 
-export function calculateDaysBetween({
-  checkIn,
-  checkOut,
-}: {
-  checkIn: Date;
-  checkOut: Date;
-}) {
+export function calculateDaysBetween({ checkIn, checkOut }: { checkIn: Date; checkOut: Date }) {
   // Calculate the difference in milliseconds
   const diffInMs = Math.abs(checkOut.getTime() - checkIn.getTime());
 

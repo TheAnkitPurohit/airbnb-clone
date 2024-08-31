@@ -1,8 +1,9 @@
-import { calculateTotals } from '@/utils/calculateTotals';
-import { Card, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { useProperty } from '@/utils/store';
 import { formatCurrency } from '@/utils/format';
+import { Separator } from '@/components/ui/separator';
+import { Card, CardTitle } from '@/components/ui/card';
+import { calculateTotals } from '@/utils/calculateTotals';
+
 function BookingForm() {
   const { range, price } = useProperty((state) => state);
   const checkIn = range?.from as Date;

@@ -1,5 +1,6 @@
 import { Amenity } from '@/utils/amenities';
 import { LuFolderCheck } from 'react-icons/lu';
+
 import Title from './Title';
 
 function Amenities({ amenities }: { amenities: string }) {

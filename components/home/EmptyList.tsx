@@ -1,5 +1,7 @@
 import Link from 'next/link';
+
 import { Button } from '../ui/button';
+
 function EmptyList({
   heading = 'No items in the list.',
   message = 'Keep exploring our properties',

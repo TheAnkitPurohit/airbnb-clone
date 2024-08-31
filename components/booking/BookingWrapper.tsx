@@ -1,10 +1,11 @@
 'use client';
 
-import { useProperty } from '@/utils/store';
+import { useEffect } from 'react';
 import { Booking } from '@/utils/types';
+import { useProperty } from '@/utils/store';
+
 import BookingCalendar from './BookingCalendar';
 import BookingContainer from './BookingContainer';
-import { useEffect } from 'react';
 
 type BookingWrapperProps = {
   propertyId: string;

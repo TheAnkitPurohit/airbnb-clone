@@ -1,19 +1,21 @@
 'use server';
 
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import { clerkClient, currentUser } from '@clerk/nextjs/server';
+
+import db from './db';
+import { formatDate } from './format';
+import { uploadImage } from './supabase';
+import { calculateTotals } from './calculateTotals';
 import {
   imageSchema,
   profileSchema,
   propertySchema,
-  validateWithZodSchema,
   createReviewSchema,
+  validateWithZodSchema,
 } from './schemas';
-import db from './db';
-import { auth, clerkClient, currentUser } from '@clerk/nextjs/server';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { uploadImage } from './supabase';
-import { calculateTotals } from './calculateTotals';
-import { formatDate } from './format';
+
 const getAuthUser = async () => {
   const user = await currentUser();
   if (!user) {
@@ -36,10 +38,7 @@ const renderError = (error: unknown): { message: string } => {
   };
 };
 
-export const createProfileAction = async (
-  prevState: any,
-  formData: FormData
-) => {
+export const createProfileAction = async (prevState: any, formData: FormData) => {
   try {
     const user = await currentUser();
     if (!user) throw new Error('Please login to create a profile');
@@ -199,11 +198,7 @@ export const fetchProperties = async ({
   return properties;
 };
 
-export const fetchFavoriteId = async ({
-  propertyId,
-}: {
-  propertyId: string;
-}) => {
+export const fetchFavoriteId = async ({ propertyId }: { propertyId: string }) => {
   const user = await getAuthUser();
   const favorite = await db.favorite.findFirst({
     where: {
@@ -268,8 +263,8 @@ export const fetchFavorites = async () => {
   return favorites.map((favorite) => favorite.property);
 };
 
-export const fetchPropertyDetails = (id: string) => {
-  return db.property.findUnique({
+export const fetchPropertyDetails = (id: string) =>
+  db.property.findUnique({
     where: {
       id,
     },
@@ -283,7 +278,6 @@ export const fetchPropertyDetails = (id: string) => {
       },
     },
   });
-};
 
 export async function createReviewAction(prevState: any, formData: FormData) {
   const user = await getAuthUser();
@@ -368,17 +362,13 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
   }
 };
 
-export const findExistingReview = async (
-  userId: string,
-  propertyId: string
-) => {
-  return db.review.findFirst({
+export const findExistingReview = async (userId: string, propertyId: string) =>
+  db.review.findFirst({
     where: {
       profileId: userId,
-      propertyId: propertyId,
+      propertyId,
     },
   });
-};
 
 export async function fetchPropertyRating(propertyId: string) {
   const result = await db.review.groupBy({
@@ -683,16 +673,19 @@ export const fetchChartsData = async () => {
       createdAt: 'asc',
     },
   });
-  const bookingsPerMonth = bookings.reduce((total, current) => {
-    const date = formatDate(current.createdAt, true);
-    const existingEntry = total.find((entry) => entry.date === date);
-    if (existingEntry) {
-      existingEntry.count += 1;
-    } else {
-      total.push({ date, count: 1 });
-    }
-    return total;
-  }, [] as Array<{ date: string; count: number }>);
+  const bookingsPerMonth = bookings.reduce(
+    (total, current) => {
+      const bookingDate = formatDate(current.createdAt, true);
+      const existingEntry = total.find((entry) => entry.date === bookingDate);
+      if (existingEntry) {
+        existingEntry.count += 1;
+      } else {
+        total.push({ date: bookingDate, count: 1 });
+      }
+      return total;
+    },
+    [] as Array<{ date: string; count: number }>
+  );
   return bookingsPerMonth;
 };
 

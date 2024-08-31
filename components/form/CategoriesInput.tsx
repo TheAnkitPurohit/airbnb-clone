@@ -2,10 +2,10 @@ import { Label } from '@/components/ui/label';
 import { categories } from '@/utils/categories';
 import {
   Select,
-  SelectContent,
   SelectItem,
-  SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectTrigger,
 } from '@/components/ui/select';
 
 const name = 'category';
@@ -25,15 +25,13 @@ function CategoriesInput({ defaultValue }: { defaultValue?: string }) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {categories.map((item) => {
-            return (
+          {categories.map((item) => (
               <SelectItem key={item.label} value={item.label}>
                 <span className='flex items-center gap-2'>
                   <item.icon /> {item.label}
                 </span>
               </SelectItem>
-            );
-          })}
+            ))}
         </SelectContent>
       </Select>
     </div>

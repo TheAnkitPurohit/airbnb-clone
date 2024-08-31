@@ -1,4 +1,5 @@
 import { fetchChartsData } from '@/utils/actions';
+
 import Chart from './Chart';
 
 async function ChartsContainer() {

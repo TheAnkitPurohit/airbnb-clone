@@ -1,6 +1,7 @@
 import { create } from 'zustand';
-import { Booking } from './types';
 import { DateRange } from 'react-day-picker';
+
+import { Booking } from './types';
 // Define the state's shape
 type PropertyState = {
   propertyId: string;
@@ -10,11 +11,9 @@ type PropertyState = {
 };
 
 // Create the store
-export const useProperty = create<PropertyState>(() => {
-  return {
+export const useProperty = create<PropertyState>(() => ({
     propertyId: '',
     price: 0,
     bookings: [],
     range: undefined,
-  };
-});
+  }));

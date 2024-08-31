@@ -1,6 +1,7 @@
 'use client';
 
 import { SignOutButton } from '@clerk/nextjs';
+
 import { useToast } from '../ui/use-toast';
 
 function SignOutLink() {
@@ -10,8 +11,8 @@ function SignOutLink() {
   };
 
   return (
-    <SignOutButton redirectUrl='/'>
-      <button className='w-full text-left' onClick={handleLogout}>
+    <SignOutButton redirectUrl="/">
+      <button type="button" className="w-full text-left" onClick={handleLogout}>
         Logout
       </button>
     </SignOutButton>

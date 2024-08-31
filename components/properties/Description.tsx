@@ -1,6 +1,8 @@
 'use client';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+
 import Title from './Title';
 
 function Description({ description }: { description: string }) {
@@ -15,7 +17,7 @@ function Description({ description }: { description: string }) {
 
   const displayedDescription =
     isLongDescription && !isFullDescriptionShown
-      ? words.splice(0, 100).join(' ') + '...'
+      ? `${words.splice(0, 100).join(' ')  }...`
       : description;
 
   return (

@@ -2,10 +2,10 @@ import { Label } from '@/components/ui/label';
 import { formattedCountries } from '@/utils/countries';
 import {
   Select,
-  SelectContent,
   SelectItem,
-  SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectTrigger,
 } from '@/components/ui/select';
 
 const name = 'country';
@@ -26,15 +26,13 @@ function CountriesInput({ defaultValue }: { defaultValue?: string }) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {formattedCountries.map((item) => {
-            return (
+          {formattedCountries.map((item) => (
               <SelectItem key={item.code} value={item.code}>
                 <span className='flex items-center gap-2'>
                   {item.flag} {item.name}
                 </span>
               </SelectItem>
-            );
-          })}
+            ))}
         </SelectContent>
       </Select>
     </div>

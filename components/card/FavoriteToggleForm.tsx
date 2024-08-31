@@ -1,8 +1,9 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import FormContainer from '../form/FormContainer';
 import { toggleFavoriteAction } from '@/utils/actions';
+
+import FormContainer from '../form/FormContainer';
 import { CardSubmitButton } from '../form/Buttons';
 
 type FavoriteToggleFormProps = {
@@ -22,7 +23,7 @@ function FavoriteToggleForm({
   });
   return (
     <FormContainer action={toggleAction}>
-      <CardSubmitButton isFavorite={favoriteId ? true : false} />
+      <CardSubmitButton isFavorite={!!favoriteId} />
     </FormContainer>
   );
 }

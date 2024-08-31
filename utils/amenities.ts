@@ -1,31 +1,32 @@
 import { IconType } from 'react-icons';
+import {
+  FiTv,
+  FiZap,
+  FiSun,
+  FiBox,
+  FiWind,
+  FiFilm,
+  FiCloud,
+  FiTruck,
+  FiMusic,
+  FiRadio,
+  FiCoffee,
+  FiTrello,
+  FiAnchor,
+  FiMapPin,
+  FiSunset,
+  FiFeather,
+  FiAirplay,
+  FiDroplet,
+  FiSunrise,
+  FiHeadphones,
+} from 'react-icons/fi';
+
 export type Amenity = {
   name: string;
   icon: IconType;
   selected: boolean;
 };
-import {
-  FiCloud,
-  FiTruck,
-  FiZap,
-  FiWind,
-  FiSun,
-  FiCoffee,
-  FiFeather,
-  FiAirplay,
-  FiTrello,
-  FiBox,
-  FiAnchor,
-  FiDroplet,
-  FiMapPin,
-  FiSunrise,
-  FiSunset,
-  FiMusic,
-  FiHeadphones,
-  FiRadio,
-  FiFilm,
-  FiTv,
-} from 'react-icons/fi';
 
 export const amenities: Amenity[] = [
   { name: 'unlimited cloud storage', icon: FiCloud, selected: false },

@@ -10,16 +10,47 @@ next.config.js
 
 vite.config.js
 vite.config.ts
-
-app/reportWebVitals.js
-app/service-worker.js
-app/serviceWorkerRegistration.js
-app/setupTests.js
-
-app/reportWebVitals.ts
-app/service-worker.ts
-app/serviceWorkerRegistration.ts
-app/setupTests.ts
+tailwind.config.js
+tailwind.config.ts
 
 
-app/components/ui
+
+
+components/ui/*
+
+
+
+# Next.js build output
+.next
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env.*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# IDE / Editors
+.idea
+.vscode
+*.swp
+*.swo
+
+# Operating System Files
+Thumbs.db
+

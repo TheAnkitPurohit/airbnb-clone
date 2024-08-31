@@ -1,6 +1,6 @@
+import { formatCurrency } from '@/utils/format';
 import StatsCards from '@/components/admin/StatsCard';
 import { fetchReservationStats } from '@/utils/actions';
-import { formatCurrency } from '@/utils/format';
 
 async function Stats() {
   const stats = await fetchReservationStats();

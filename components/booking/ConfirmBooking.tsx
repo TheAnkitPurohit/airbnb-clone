@@ -1,10 +1,11 @@
 'use client';
-import { SignInButton, useAuth } from '@clerk/nextjs';
-import { Button } from '@/components/ui/button';
+
 import { useProperty } from '@/utils/store';
-import FormContainer from '@/components/form/FormContainer';
-import { SubmitButton } from '@/components/form/Buttons';
+import { Button } from '@/components/ui/button';
+import { useAuth, SignInButton } from '@clerk/nextjs';
 import { createBookingAction } from '@/utils/actions';
+import { SubmitButton } from '@/components/form/Buttons';
+import FormContainer from '@/components/form/FormContainer';
 
 function ConfirmBooking() {
   const { userId } = useAuth();

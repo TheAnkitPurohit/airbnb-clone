@@ -1,10 +1,10 @@
 import { Label } from '@/components/ui/label';
 import {
   Select,
-  SelectContent,
   SelectItem,
-  SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectTrigger,
 } from '@/components/ui/select';
 
 const RatingInput = ({
@@ -29,13 +29,11 @@ const RatingInput = ({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {numbers.map((number) => {
-            return (
+          {numbers.map((number) => (
               <SelectItem key={number} value={number}>
                 {number}
               </SelectItem>
-            );
-          })}
+            ))}
         </SelectContent>
       </Select>
     </div>
